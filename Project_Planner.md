@@ -23,7 +23,7 @@ Users should be able to register, log in, log out and update their profile.
 
 Tables
 
-•	Users: stores information about users of the system, including their name, email, and password.
+•	Users: stores information about users of the system, including their name, email, password and the city.
 
 •	Categories: stores information about different categories for items.
 
