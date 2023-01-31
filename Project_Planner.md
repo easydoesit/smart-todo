@@ -27,7 +27,7 @@ Tables
 
 •	Categories: stores information about different categories for items.
 
-•	Tasks: stores information about the item created by users, including the category, user, item name, creation date, due date, completed date, priority, and the status of the item.
+•	Items: stores information about the item created by users, including the category, user, item name, creation date, due date, completed date, priority, and the status of the item.
 
 The relationship between these tables is as follows:
 
