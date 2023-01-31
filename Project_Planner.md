@@ -54,7 +54,7 @@ https://serpapi.com/google-shopping-api
 
 # ROUTES
 
-## BREAD
+# BREAD
 
 ## Browse (get “/”)
 	view the item(s) in the list
@@ -78,4 +78,4 @@ https://serpapi.com/google-shopping-api
 	add an item to the list (will be auto classified)
 
 ## Delete (post “/:id/delete”)
-	remove an item from the list 
+	remove an item from the list
