@@ -31,6 +31,7 @@ Users should be able to register, log in, log out and update their profile.
 https://docs.developer.yelp.com/docs/fusion-intro
 
 - We can't store Yelp Data for more than 24 hours. Not sure we need this anyway.
+- Maybe we ignore this as this is just for class.
 
 ## Google Books
 
@@ -45,3 +46,8 @@ https://github.com/google/google-api-javascript-client
 
 https://www.themoviedb.org/documentation/api
 
+## SerpAPI
+
+https://serpapi.com/google-shopping-api
+
+- Use this for google shopping. Only 100 requests so we may need to set up another account later.
