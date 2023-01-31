@@ -19,6 +19,29 @@ Users should be able to change a category of an item in case it was mis-categori
 
 Users should be able to register, log in, log out and update their profile.
 
-#ERD
+# ERD
 
-#NOTES
+# API
+
+## Rotten Tomatoes
+- Rotten Tomatoes no longer supports educational API's
+
+## Yelp
+
+https://docs.developer.yelp.com/docs/fusion-intro
+
+- We can't store Yelp Data for more than 24 hours. Not sure we need this anyway.
+
+## Google Books
+
+https://developers.google.com/books/docs/overview
+
+
+Javascript Library:
+
+https://github.com/google/google-api-javascript-client
+
+## The Movie DATABASE
+
+https://www.themoviedb.org/documentation/api
+
