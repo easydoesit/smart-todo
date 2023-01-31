@@ -21,6 +21,22 @@ Users should be able to register, log in, log out and update their profile.
 
 # ERD
 
+Tables
+
+•	Users: stores information about users of the system, including their name, email, and password.
+
+•	Categories: stores information about different categories for items.
+
+•	Tasks: stores information about the item created by users, including the category, user, item name, creation date, due date, completed date, priority, and the status of the item.
+
+The relationship between these tables is as follows:
+
+1.	One user can have multiple items, but each item is created by only one user, so the relationship between the users table and items table is a one-to-many relationship.
+
+2.	One category can have multiple items, but each item belongs to only one category. So the relationship between the categories table and items table is a one-to-many relationship.
+
+<img width="1357" alt="Screen Shot 2023-01-31 at 13 31 08" src="https://user-images.githubusercontent.com/36883798/215850715-d3b12b5a-cd43-4c0a-b239-6821bc848ca8.png">
+
 # API
 
 ## Rotten Tomatoes
