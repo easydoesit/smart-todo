@@ -51,3 +51,5 @@ https://www.themoviedb.org/documentation/api
 https://serpapi.com/google-shopping-api
 
 - Use this for google shopping. Only 100 requests so we may need to set up another account later.
+
+Temp. Delete this later.
