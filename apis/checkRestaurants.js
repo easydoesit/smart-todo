@@ -5,14 +5,16 @@ const { fetchYelp } = require("./fetchyelp");
 
 const checkRestaurants = function(city, name) {
 
-  fetchYelp(city, name)
+  return fetchYelp(city, name)
     .then(data => {
       for (let i in data.businesses) {
+        console.log('Data = ' + data.businesses[i].name);
         if (data.businesses[i].name === name) {
-          //console.log("The name exists: ", name);
+          console.log("The name exists: ", name);
           return true;
         }
       }
+      return false;
     });
 };
 
