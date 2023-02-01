@@ -1,13 +1,18 @@
 const db = require('../connection');
 
 const getItems = () => {
-
   console.log("Get all items query");
 
-  //query all active items
-  return db.query('SELECT * FROM users;')
-    .then(data => {
-      return data.rows;
+  //Get all active items
+  const query = `SELECT * FROM items WHERE item_status = true;`;
+
+  return db.query(query)
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => {
+      console.error(err);
+      return err;
     });
 };
 
