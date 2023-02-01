@@ -7,73 +7,64 @@
 
 const { render } = require('ejs');
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const addItemQuery = require('../db/queries/addItem');
 const updateItemQuery = require('../db/queries/updateItem');
 const deleteItemQuery = require('../db/queries/deleteItem');
 
 //Route for adding an item
-router.post('/', (req, res) => {
-
+router.post('/:id', (req, res) => {
+  const userID = req.params.id;
+  const itemName = req.body.item;
   //search apis for item catagory
+  console.log(`Adding the item with ID: ${userID} to items: ${itemName}`);
   console.log(req.body.item);
 
   //make sql query that adds item and catagory
-  addItemQuery.addItem(req.body.item, 'someCatagory')
-    .then(users => {
-      res.json({ users });
+  addItemQuery.addItem(userID, itemName)
+    .then(addedItem => {
+      res.json({ success: true, data: addedItem });
     })
-    // .then(() => {
-    //   res.redirect('/');
-    // })
     .catch(err => {
       res
         .status(500)
         .json({ error: err.message });
     });
-
 });
 
 //Route for updating an item
 router.post("/:id", (req, res) => {
+  const itemID = req.params.id;
+  const categoryName = req.body.catagory;
 
-  console.log('Item id = ' + req.params.id);
+  console.log(`Updating item with ID: ${itemID} to category: ${categoryName}`);
 
   //make sql query that updates item to the user selected catagory
-  updateItemQuery.updateItem(req.params.id, req.body.catagory)
-    .then(users => {
-      res.json({ users });
+  updateItemQuery.updateItem(itemID, categoryName)
+    .then(updatedItem => {
+      res.json({ status: 'Success', data: updatedItem });
     })
-    // .then(() => {
-    //   res.redirect('/');
-    // })
     .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+      console.error(err);
+      res.status(500).json({ error: err.message });
     });
-
 });
 
 //Route for deleting an item
 router.post("/:id/delete", (req, res) => {
+  const itemID = req.params.id;
 
-  console.log('Delete Item id = ' + req.params.id);
+  console.log(`Deleting item with ID: ${itemID}`);
 
-  //make sql query that deletes item from the database
-  deleteItemQuery.deleteItem(req.params.id)
-    .then(users => {
-      res.json({ users });
+  //make sql query that deletes item with using item id
+  deleteItemQuery.deleteItem(itemID)
+    .then(deletedItem => {
+      res.json({ status: 'Success', data: deletedItem });
     })
-    // .then(() => {
-    //   res.redirect('/');
-    // })
     .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+      console.error(err);
+      res.status(500).json({ error: err.message });
     });
-
 });
 
 

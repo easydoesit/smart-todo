@@ -2,10 +2,18 @@ const db = require('../connection');
 
 const deleteItem = (itemID) => {
   console.log('Delete Item ID = ' + itemID);
-  //create delete item query
-  return db.query('SELECT * FROM users;')
-    .then(data => {
-      return data.rows;
+
+  const query = `DELETE FROM items WHERE id = $1;`;
+
+  const values = [itemID];
+
+  return db.query(query, values)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.error(err);
+      return err;
     });
 };
 

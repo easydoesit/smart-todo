@@ -1,9 +1,15 @@
 const db = require('../connection');
 
 const getUsers = () => {
-  return db.query('SELECT * FROM users;')
-    .then(data => {
-      return data.rows;
+  const query = 'SELECT * FROM users;';
+
+  return db.query(query)
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => {
+      console.error(err);
+      return err;
     });
 };
 
