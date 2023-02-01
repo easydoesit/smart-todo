@@ -3,7 +3,7 @@ const sdk = require('api')('@yelp-developers/v1.0#2hsur2ylbank95o');
 require('dotenv').config();
 const apiKey = process.env.YELP_API;
 
-// fetch Yelp takes in parameters of city and name and returns true if the name is an exact match in the city.
+// fetch Yelp takes in parameters of city and name and returns all the data from the api request
 const fetchYelp = function(city, name) {
   // make url friendly strings
   const nameURLFriendly = name.replace(' ', '%20');
@@ -13,17 +13,14 @@ const fetchYelp = function(city, name) {
   sdk.auth('Bearer ' + apiKey);
 
   // yelp request {data} is the full object of what is returned. Console.log(data) to see the nested objects.
-  sdk.v3_business_search({location: cityURLFriendly, term: nameURLFriendly, sort_by: 'best_match', limit: '10'})
+  return sdk.v3_business_search({location: cityURLFriendly, term: nameURLFriendly, sort_by: 'best_match', limit: '10'})
     .then(({ data }) => {
-      for (let i in data.businesses) {
-        //console.log(data.businesses[i].name);
-        if (data.businesses[i].name === name) {
-          console.log("The name exists: ", name);
-          return true;
-        }
-      }
+      //console.log(data);
+      return data;
     })
     .catch(err => console.error(err));
 };
 
+
 module.exports = { fetchYelp };
+
