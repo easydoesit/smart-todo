@@ -68,4 +68,30 @@ https://serpapi.com/google-shopping-api
 
 - Use this for google shopping. Only 100 requests so we may need to set up another account later.
 
-Temp. Delete this later.
+# Routes
+
+## BREAD
+
+## Browse (get “/”)
+	view the item(s) in the list
+
+## Read 
+	read an item(s) from the list
+		To watch (get “/watch”)
+		To eat (get “/eat”)
+		To read (get “/read”)
+		To buy (get “/buy”)
+		Unclassified (get “/unclassified”)
+
+## Edit (post “/items/:id”)
+	manually reclassify an item in the list
+		To watch
+		To eat
+		To read
+		To buy
+			
+## Add (post “/items”)
+	add an item to the list (will be auto classified)
+
+## Delete (post “items/:id/delete”)
+	remove an item from the list 
