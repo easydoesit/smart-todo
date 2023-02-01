@@ -1,8 +1,6 @@
 const db = require('../connection');
 
 const getItems = () => {
-  console.log("Get all items query");
-
   //Get all active items
   const query = `SELECT * FROM items WHERE item_status = true;`;
 
