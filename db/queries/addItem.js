@@ -1,17 +1,11 @@
 const db = require('../connection');
 
-const addItem = (item, category) => {
-  console.log('Item = ' + item + ' Category: ' + category);
+const addItem = (userID, item) => {
+  console.log('Item = ' + item + ' User ID = ' + userID);
+//write query to add item to database
+  const query = `INSERT INTO items (user_id, item_name) VALUES ($1, $2)`;
 
-  const query = `
-  INSERT INTO items (category_id, user_id, item_name, due_date, priority)
-  SELECT categories.id, users.id, $1, $2, $3
-  FROM categories
-  JOIN users ON users.email = $4
-  WHERE categories.category_name = $5;
-`;
-
-  const values = [item.item_name, item.due_date, item.priority, item.email, category.category_name];
+  const values = [userID, item];
 
   return db.query(query, values)
     .then(res => {
