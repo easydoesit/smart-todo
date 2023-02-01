@@ -1,6 +1,7 @@
 // api is provided by yelp
 const sdk = require('api')('@yelp-developers/v1.0#2hsur2ylbank95o');
 require('dotenv').config();
+
 const apiKey = process.env.YELP_API;
 
 // fetch Yelp takes in parameters of city and name and returns all the data from the api request
