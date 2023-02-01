@@ -4,13 +4,15 @@ const { fetchMovieDB } = require('./fetchMovieDB');
 
 const checkMovies = function(movieName) {
 
-  fetchMovieDB(movieName).then((data) => {
+  return fetchMovieDB(movieName).then((data) => {
     for (let i in data.results) {
+      console.log('Data = ' + data.results[i].original_title);
       if (data.results[i].original_title === movieName) {
         console.log("The name exists: ", movieName);
         return true;
       }
     }
+    return false;
   });
 };
 

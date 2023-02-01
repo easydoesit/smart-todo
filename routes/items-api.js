@@ -7,64 +7,100 @@
 
 const { render } = require('ejs');
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
 const addItemQuery = require('../db/queries/addItem');
 const updateItemQuery = require('../db/queries/updateItem');
 const deleteItemQuery = require('../db/queries/deleteItem');
 
-//Route for adding an item
-router.post('/:id', (req, res) => {
-  const userID = req.params.id;
-  const itemName = req.body.item;
-  //search apis for item catagory
-  console.log(`Adding the item with ID: ${userID} to items: ${itemName}`);
-  console.log(req.body.item);
+const checkRestaurants = require('../apis/checkRestaurants');
+const checkMovies = require('../apis/checkMovies');
 
-  //make sql query that adds item and catagory
-  addItemQuery.addItem(userID, itemName)
-    .then(addedItem => {
-      res.json({ success: true, data: addedItem });
+//Route for adding an item
+router.post('/', (req, res) => {
+
+  //search apis for item category
+  //check Restaurants & Cafes first
+  checkRestaurants.checkRestaurants('Newmarket',req.body.item)
+    .then((result) => {
+      console.log(result);
+      //if result = true add to database as a Restaurants & Cafes
+      if (result === true) {
+         //make sql query that adds item and catagory
+        addItemQuery.addItem(req.body.item, 'Restaurants & Cafes')
+        .then(() => {
+          res.redirect('/');
+        })
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+      } else {
+
+        //check Film & Series second
+        checkMovies.checkMovies(req.body.item)
+        .then((result) => {
+          console.log(result);
+          if (result === true) {
+            //make sql query that adds item and catagory
+            addItemQuery.addItem(req.body.item, 'Film & Series')
+            .then(() => {
+              res.redirect('/');
+            })
+            .catch(err => {
+              res
+                .status(500)
+                .json({ error: err.message });
+            });
+          } else {
+
+            //check Books third
+          }
+        })
+      }
+    });
+  });
+
+//Route for updating an item
+router.post("/:id", (req, res) => {
+
+  console.log('Item id = ' + req.params.id);
+
+  //make sql query that updates item to the user selected catagory
+  updateItemQuery.updateItem(req.params.id, req.body.category)
+    .then(users => {
+      res.json({ users });
     })
+    // .then(() => {
+    //   res.redirect('/');
+    // })
     .catch(err => {
       res
         .status(500)
         .json({ error: err.message });
     });
-});
 
-//Route for updating an item
-router.post("/:id", (req, res) => {
-  const itemID = req.params.id;
-  const categoryName = req.body.catagory;
-
-  console.log(`Updating item with ID: ${itemID} to category: ${categoryName}`);
-
-  //make sql query that updates item to the user selected catagory
-  updateItemQuery.updateItem(itemID, categoryName)
-    .then(updatedItem => {
-      res.json({ status: 'Success', data: updatedItem });
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: err.message });
-    });
 });
 
 //Route for deleting an item
 router.post("/:id/delete", (req, res) => {
-  const itemID = req.params.id;
 
-  console.log(`Deleting item with ID: ${itemID}`);
+  console.log('Delete Item id = ' + req.params.id);
 
-  //make sql query that deletes item with using item id
-  deleteItemQuery.deleteItem(itemID)
-    .then(deletedItem => {
-      res.json({ status: 'Success', data: deletedItem });
+  //make sql query that deletes item from the database
+  deleteItemQuery.deleteItem(req.params.id)
+    .then(users => {
+      res.json({ users });
     })
+    // .then(() => {
+    //   res.redirect('/');
+    // })
     .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: err.message });
+      res
+        .status(500)
+        .json({ error: err.message });
     });
+
 });
 
 
