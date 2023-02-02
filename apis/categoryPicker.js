@@ -13,6 +13,7 @@ const categoryPicker = function(item, city, userID) {
       console.log("checkRest data: ", data);
       if (data === true) {
         category = 'restaurant';
+        //addItem(userID, item, category);
       }
       console.log("category at rest:", category);
       return category;
@@ -21,15 +22,15 @@ const categoryPicker = function(item, city, userID) {
       if (data !== 'restaurant') {
         return checkMovies(item);
       } else {
-        addItem(userID, item, category);
         return category; // returns restaurant
       }
     })
     .then((data) => {
       if (data !== true) {
-        return category;
+        return category; // returns last category name
       } else {
-        category = 'movie';
+        category = 'movie'; // changes name to movie
+        //addItem(userID, item, category);
       }
       console.log("category at movie:", category);
       return category;
@@ -44,15 +45,22 @@ const categoryPicker = function(item, city, userID) {
     })
     .then((data) => {
       if (data !== true) {
-        return category;
+        return category; // returns last category name
       } else {
         category = 'book';
+        //addItem(userID, item, category);
       }
       console.log("category at book:", category);
       return category;
+    })
+    .then((data) => {
+      addItem(userID, item, data);
+      return data;
     });
 };
 
-module.exports = {categoryPicker};
 
-//categoryPicker("Ten Foot Henry", 'Calgary', 1).then(data => console.log(data));
+//categoryPicker("Dyson Vacuum", 'Calgary', 1).then(data => console.log(data));
+
+module.exports = { categoryPicker };
+
