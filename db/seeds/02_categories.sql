@@ -1,13 +1,13 @@
 -- Categories table seeds here.
 
 INSERT INTO categories (category_name)
-VALUES ('Film & Series');
+VALUES ('movie');
 
 INSERT INTO categories (category_name)
-VALUES ('Restaurants & Cafes');
+VALUES ('restaurant');
 
 INSERT INTO categories (category_name)
-VALUES ('Books');
+VALUES ('book');
 
 INSERT INTO categories (category_name)
-VALUES ('Products');
+VALUES ('product');

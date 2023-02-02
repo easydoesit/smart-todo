@@ -1,11 +1,13 @@
 const { checkRestaurants } = require('./checkRestaurants');
 const { checkMovies } = require('./checkMovies');
 const { checkGoogleBooks } = require('./checkGoogleBooks');
+const { addItem } = require('../db/queries/addItem');
 
-const categoryPicker = function(item, city) {
+const categoryPicker = function(item, city, userID) {
   console.log(item, city);
   let category = 'product';
 
+  // check Restaurant here returns either "product" or "restaurant"
   return checkRestaurants(city, item)
     .then(data => {
       console.log("checkRest data: ", data);
@@ -19,7 +21,8 @@ const categoryPicker = function(item, city) {
       if (data !== 'restaurant') {
         return checkMovies(item);
       } else {
-        return category;
+        addItem(userID, item, category);
+        return category; // returns restaurant
       }
     })
     .then((data) => {
@@ -52,4 +55,4 @@ const categoryPicker = function(item, city) {
 
 module.exports = {categoryPicker};
 
-categoryPicker("Ten Foot Henry", 'Calgary').then(data => console.log(data));
+//categoryPicker("Ten Foot Henry", 'Calgary', 1).then(data => console.log(data));

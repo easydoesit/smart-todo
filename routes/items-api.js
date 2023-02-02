@@ -8,58 +8,16 @@
 const { render } = require('ejs');
 const express = require('express');
 const router  = express.Router();
-const addItemQuery = require('../db/queries/addItem');
 const updateItemQuery = require('../db/queries/updateItem');
 const deleteItemQuery = require('../db/queries/deleteItem');
 
-const checkRestaurants = require('../apis/checkRestaurants');
-const checkMovies = require('../apis/checkMovies');
+const { categoryPicker } = require('../apis/categoryPicker');
 
 //Route for adding an item
 router.post('/', (req, res) => {
-
-  //search apis for item category
-  //check Restaurants & Cafes first
-  checkRestaurants.checkRestaurants('Newmarket',req.body.item)
-    .then((result) => {
-      console.log(result);
-      //if result = true add to database as a Restaurants & Cafes
-      if (result === true) {
-         //make sql query that adds item and catagory
-        addItemQuery.addItem(req.body.item, 'Restaurants & Cafes')
-        .then(() => {
-          res.redirect('/');
-        })
-        .catch(err => {
-          res
-            .status(500)
-            .json({ error: err.message });
-        });
-      } else {
-
-        //check Film & Series second
-        checkMovies.checkMovies(req.body.item)
-        .then((result) => {
-          console.log(result);
-          if (result === true) {
-            //make sql query that adds item and catagory
-            addItemQuery.addItem(req.body.item, 'Film & Series')
-            .then(() => {
-              res.redirect('/');
-            })
-            .catch(err => {
-              res
-                .status(500)
-                .json({ error: err.message });
-            });
-          } else {
-
-            //check Books third
-          }
-        })
-      }
-    });
-  });
+  categoryPicker(req.body.item, 'Calgary', 1)
+    .then(res.redirect('/'));
+});
 
 //Route for updating an item
 router.post("/:id", (req, res) => {
