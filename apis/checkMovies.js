@@ -1,18 +1,21 @@
 const { fetchMovieDB } = require('./fetchMovieDB');
 
-//checkMovies takes one "movieName" and checks for an exact match. If exact it returns true.
+//checkMovies takes one  item" and checks for an exact match. If exact it returns true.
 
-const checkMovies = function(movieName) {
+const checkMovies = function(item) {
 
-  return fetchMovieDB(movieName).then((data) => {
+  return fetchMovieDB(item).then((data) => {
+    let returnVar = item;
     for (let i in data.results) {
-      console.log('Data = ' + data.results[i].original_title);
-      if (data.results[i].original_title === movieName) {
-        console.log("The name exists: ", movieName);
-        return true;
+      console.log(data.results[i].original_title);
+      if (data.results[i].original_title === item) {
+        console.log("The Movie name exists: ", item);
+        returnVar = true;
+        return returnVar;
       }
     }
-    return false;
+    console.log("The Movie name doesn't exist!");
+    return returnVar;
   });
 };
 

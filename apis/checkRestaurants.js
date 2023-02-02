@@ -1,22 +1,23 @@
 const { fetchYelp } = require("./fetchyelp");
 
-// checks restaurants based on the users "city" and the exact "name" of the restaurant.
+// checks restaurants based on the users "city" and the exact "item" of the restaurant.
 // TODO - Would like to feed it any API call so it doesn't have to be specifically yelp but I don't know how.
 
-const checkRestaurants = function(city, name) {
+const checkRestaurants = function(city, item) {
 
-  return fetchYelp(city, name)
+  return fetchYelp(city, item)
     .then(data => {
       for (let i in data.businesses) {
-        console.log('Data = ' + data.businesses[i].name);
-        if (data.businesses[i].name === name) {
-          console.log("The name exists: ", name);
+        if (data.businesses[i].item === item) {
+          console.log("The restaurant exists: ", item);
           return true;
         }
       }
-      return false;
+      console.log("The restuarant doesn't exist!");
+      return item;
     });
 };
+
 
 module.exports = { checkRestaurants };
 

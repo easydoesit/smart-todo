@@ -17,7 +17,7 @@ const fetchGoogleBooks = function(name, numResults) {
 
 module.exports = {fetchGoogleBooks};
 
-// fetchGoogleBooks('Aliens', 40).then((data) => {
+// fetchGoogleBooks('The Sicilian', 40).then((data) => {
 //   const arr = [];
 //   for (let i in data) {
 //     arr.push(data[i].volumeInfo.title);
