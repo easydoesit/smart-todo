@@ -52,4 +52,4 @@ const categoryPicker = function(item, city) {
 
 module.exports = {categoryPicker};
 
-//categoryPicker('Dyson Vacuum', 'Calgary').then(data => console.log(data));
+categoryPicker("Ten Foot Henry", 'Calgary').then(data => console.log(data));
