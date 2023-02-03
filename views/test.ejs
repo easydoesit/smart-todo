@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+  <!-- Drag and drop with jquery-->
+  <!-- The important part is inserting jquery and jquery-ui before calling the function in this oder.-->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Make sure the element you are trying to call .sortable on exists and is initialized
+        $("#sortable").sortable();
+    });
+      </script>
+  <!-- End of the drag and drop with jquery-->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+
+  <script defer src="/scripts/test.js"></script>
+  <title>Smart To-Do List</title>
+</head>
+
+<body>
+    <main style="margin: 1em;">
+      <h3>To-Do List</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Items</th>
+              <th scope="col">Priority</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <!-- Give the id for drag and drop sorting-->
+          <tbody id="sortable">
+            <tr>
+              <td>Task 1</td>
+              <td>High</td>
+              <td>
+                <form method="GET" action="/">
+                  <button type="submit" class="btn btn-outline-primary">Edit</button>
+                </form>
+              </td>
+              <td>
+                <form method="POST" action="/">
+                  <button type="submit" class="btn btn-outline-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>Task 2</td>
+              <td>Low</td>
+              <td>
+                <form method="GET" action="/">
+                  <button type="submit" class="btn btn-outline-primary">Edit</button>
+                </form>
+              </td>
+              <td>
+                <form method="POST" action="/">
+                  <button type="submit" class="btn btn-outline-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </main>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+
+</body>
+
+</html>
