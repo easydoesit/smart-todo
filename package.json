@@ -14,12 +14,14 @@
   "dependencies": {
     "api": "^5.0.7",
     "chalk": "^2.4.2",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^2.0.0",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "moviedb-promise": "^3.3.1",
     "pg": "^8.9.0",
+    "request": "^2.88.2",
     "request-promise-native": "^1.0.9",
     "sass": "^1.57.1"
   },

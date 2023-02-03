@@ -8,54 +8,66 @@ const categoryPicker = function(item, city, userID) {
   let category = 'product';
 
   // check Restaurant here returns either "product" or "restaurant"
+  // every then() is either passing the category or the API data
+  // if the api is required.
   return checkRestaurants(city, item)
     .then(data => {
-      console.log("checkRest data: ", data);
+
       if (data === true) {
         category = 'restaurant';
-        //addItem(userID, item, category);
       }
-      console.log("category at rest:", category);
+
       return category;
+
     })
     .then((data) => {
+
       if (data !== 'restaurant') {
+        // checkMovies here returns api data
         return checkMovies(item);
       } else {
-        return category; // returns restaurant
+        return category; // returns current category
       }
+
     })
     .then((data) => {
+
+      // if checkMovies returned false
       if (data !== true) {
         return category; // returns last category name
       } else {
         category = 'movie'; // changes name to movie
         //addItem(userID, item, category);
       }
-      console.log("category at movie:", category);
+
       return category;
+
     })
     .then((data) => {
-      console.log("beginning of books: ", data);
+
+      // if category is still product then check if it's a book
       if (data !== 'movie' && data !== 'restaurant') {
         return checkGoogleBooks(item, 40);
       } else {
         return category;
       }
+
     })
     .then((data) => {
+
+      //if the checkGoogleBooks returned false
       if (data !== true) {
         return category; // returns last category name
       } else {
         category = 'book';
-        //addItem(userID, item, category);
       }
-      console.log("category at book:", category);
+
       return category;
+
     })
     .then((data) => {
-      addItem(userID, item, data);
-      return data;
+      addItem(userID, item, data); // pushes userID, item, and Category to Database.
+      return data; //returns the final category
     });
 };
 

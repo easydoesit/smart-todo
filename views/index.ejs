@@ -3,53 +3,145 @@
 
 <head>
   <title>Home Page</title>
-
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
-</head>
+  <%- include('partials/header') %>
 
 <body>
-  <h1>Have fun! 🥔</h1>
-
-  <h3>Enter item</h3>
-      <form class="form-inline" action="/items" method="POST">
-        <div>
-          <label">Enter item:</label>
-          <input
-            type="text"
-            name="item"
-          />
-          <button type="submit" >Submit</button>
-        </div>
-      </form>
-
-    <h3>update item</h3>
-      <form class="form-inline" action="/items/1" method="POST">
-        <div>
-          <label>Enter category:</label>
-          <input
-            type="text"
-            name="category"
-          />
-          <button type="submit" >Submit</button>
-        </div>
-      </form>
-
-    <h3>delete item</h3>
-      <form class="form-inline" action="/items/2/delete" method="POST">
-        <div>
-          <button type="submit" >Delete</button>
-        </div>
-      </form>
+  <%- include('partials/nav') %>
+  <div class="item_entry">
+    <h3>What would you like to try?</h3>
+    <form class="form-inline" action="/items" method="POST">
+      <div>
+        <input
+          type="text"
+          name="item"
+        />
+        <button type="submit" >ADD</button>
+      </div>
+    </form>
+  </div>
+  <div class="category-box">
+    <div class="category-header">Restaurants and Cafes</div>
+    <div class="list-box">
+      <ul>
+        <li class="item">
+          <div>
+            <form class="item-form" action="/" method="POST">
+              <button><i class="fa-solid fa-square-check"></i></button><span>Need Item Name Here</span><img class="grip" src="/images/gripIcon-01.png">
+            </form>
+          </div>
+        </li>
+        <li class="item">
+          <div>
+            <form class="item-form" action="/" method="POST">
+              <button><i class="fa-solid fa-square-check"></i></button><span>These are dynamicallycreated</span><img class="grip" src="/images/gripIcon-01.png">
+            </form>
+          </div>
+        </li>
+      </ul>
+      </div class=category-footer><span>more</span><i class="fa-solid fa-caret-down"></i></div>
+    </div>
+  </div>
+  <div class="category-header">Movies</div>
+    <div class="list-box">
+      <ul>
+        <li class="item">
+          <div>
+            <form class="item-form" action="/" method="POST">
+              <button><i class="fa-solid fa-square-check"></i></button><span>Need Item Name Here</span><img class="grip" src="/images/gripIcon-01.png">
+            </form>
+          </div>
+        </li>
+        <li class="item">
+          <div>
+            <form class="item-form" action="/" method="POST">
+              <button><i class="fa-solid fa-square-check"></i></button><span>These are dynamicallycreated</span><img class="grip" src="/images/gripIcon-01.png">
+            </form>
+          </div>
+        </li>
+      </ul>
+      </div class=category-footer><span>more</span><i class="fa-solid fa-caret-down"></i></div>
+    </div>
+  </div>
+  <div class="category-header">Books</div>
+    <div class="list-box">
+      <ul>
+        <li class="item">
+          <div>
+            <form class="item-form" action="/" method="POST">
+              <button><i class="fa-solid fa-square-check"></i></button><span>Need Item Name Here</span><img class="grip" src="/images/gripIcon-01.png">
+            </form>
+          </div>
+        </li>
+        <li class="item">
+          <div>
+            <form class="item-form" action="/" method="POST">
+              <button><i class="fa-solid fa-square-check"></i></button><span>These are dynamicallycreated</span><img class="grip" src="/images/gripIcon-01.png">
+            </form>
+          </div>
+        </li>
+      </ul>
+      </div class=category-footer><span>more</span><i class="fa-solid fa-caret-down"></i></div>
+    </div>
+  </div>
+  <div class="category-header">Products</div>
+    <div class="list-box">
+      <ul>
+        <li class="item">
+          <div>
+            <form class="item-form" action="/" method="POST">
+              <button><i class="fa-solid fa-square-check"></i></button><span>Need Item Name Here</span><img class="grip" src="/images/gripIcon-01.png">
+            </form>
+          </div>
+        </li>
+        <li class="item">
+          <div>
+            <form class="item-form" action="/" method="POST">
+              <button><i class="fa-solid fa-square-check"></i></button><span>These are dynamicallycreated</span><img class="grip" src="/images/gripIcon-01.png">
+            </form>
+          </div>
+        </li>
+      </ul>
+      </div class=category-footer><span>more</span><i class="fa-solid fa-caret-up"></i></div>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  LEFT UPDATE ITEM IN CASE YOU ARE STILL USING IT
+  <br/>
+  <br/>
+<h3>update item</h3>
+  <form class="form-inline" action="/items/1" method="POST">
+    <div>
+      <label>Enter category:</label>
+      <input
+        type="text"
+        name="category"
+      />
+      <button type="submit" >Submit</button>
+    </div>
+  </form>
+<h3>delete item</h3>
+  <form class="form-inline" action="/items/2/delete" method="POST">
+    <div>
+      <button type="submit" >Delete</button>
+    </div>
+  </form>
+  <h3>login</h3>
+  <form class="form-inline" action="/login" method="POST">
+    <div>
+      <label>Email:</label>
+      <input
+        type="text"
+        name="email"
+      />
+      <label>Password:</label>
+      <input
+        type="text"
+        name="password"
+      />
+      <button type="submit" >Login</button>
+    </div>
+  </form>
 
 </body>
 
