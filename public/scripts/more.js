@@ -1,8 +1,7 @@
 $(document).ready(function() {
-
+  const liHeight = $('li').height();
   //this is the mobileStart conditions
   const mobileStart = function() {
-    const liHeight = $('li').height();
     startHeight = liHeight * 2;
 
     $("ul").height(startHeight);
@@ -33,9 +32,10 @@ $(document).ready(function() {
 
     });
   };
-
+  console.log($(window).width());
   // mobile version controls
   if ($(window).width() <= 480) {
+
     mobileStart();
     mobileListenerExpand();
     mobileListenerShrink();
