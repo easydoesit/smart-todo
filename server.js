@@ -40,6 +40,7 @@ const testRoutes = require('./routes/test');
 const testApiRoutes = require('./routes/test-api');
 
 const loginRoutes = require('./routes/login-api');
+const moreRoutes = require('./routes/more');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -48,6 +49,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/items', addApiRoutes);
+app.use('/more', moreRoutes);
 app.use('/api/test', testApiRoutes);
 app.use('/test', testRoutes);
 // Note: mount other resources here, using the same pattern above
