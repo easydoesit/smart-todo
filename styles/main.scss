@@ -1,3 +1,9 @@
+$nav-color: mediumaquamarine;
+$restaurants-color: lightseagreen;
+$movies-color: cornflowerblue;
+$books-color: darkorchid;
+$products-color: darkslateblue;
+
 body {
   display: flex;
   flex-direction: column;
@@ -48,7 +54,7 @@ h3 {
   width:fit-content;
   border: 0;
   border-radius: 4px;
-  background: mediumaquamarine;
+  background: $nav-color;
   box-shadow: none;
   color: white;
   font-size: 18px;
@@ -79,7 +85,7 @@ ul {
 }
 
 .item {
-  border: 1px solid lightseagreen;
+  border: 1px solid $nav-color;
   border-radius: 4px;
   padding: 3px;
   margin: 5px;
@@ -90,13 +96,13 @@ li button {
   border: 0;
   background: none;
   box-shadow: none;
-  color: mediumaquamarine;
+  color: $nav-color;
   font-size: 24px;
 }
 
 .navbar {
   display: flex;
-  background: mediumaquamarine;
+  background: $nav-color;
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -107,7 +113,7 @@ li button {
 
 .category-box {
   width: calc(100% - 20px);
-  border: 1px solid lightseagreen;
+  border: 1px solid lightgray;
   border-radius: 4px;
   margin: 5px;
 }
@@ -116,7 +122,6 @@ li button {
   width: 100%;
   font-size: 24px;
   font-weight: bold;
-  background: lightseagreen;
   color: white;
   padding-left: 0.5em;
   padding-top: 0.2em;
@@ -126,7 +131,6 @@ li button {
 
 .category-footer {
   display: flex;
-  background: lightseagreen;
   color: white;
   justify-content: center;
 
@@ -135,4 +139,24 @@ li button {
 .grip {
   height: 16px;
   padding-right: 6px;
+}
+
+.restaurants {
+  border-color: $restaurants-color;
+  background: $restaurants-color;
+}
+
+.movies {
+  border-color:$movies-color;
+  background: $movies-color;
+}
+
+.books {
+  border-color: $books-color;
+  background: $books-color;
+}
+
+.products {
+  border-color:$products-color;
+  background: $products-color;
 }
