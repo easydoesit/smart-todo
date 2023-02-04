@@ -49,6 +49,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/items', addApiRoutes);
+app.use('/login', loginRoutes);
 app.use('/more', moreRoutes);
 app.use('/api/test', testApiRoutes);
 app.use('/test', testRoutes);
@@ -79,6 +80,7 @@ app.get('/', (req, res) => {
 });
 
 const updatePriorityQuery = require('./db/queries/updatePriority');
+const { login } = require('./db/queries/login');
 
 
 app.post('/api/test', (req, res) => {
