@@ -39,6 +39,9 @@ $(document).ready(function() {
     mobileStart();
     mobileListenerExpand();
     mobileListenerShrink();
+  } else {
+    $('.category-footer').remove();
+    $('.category-footer-open').remove();
   }
 
 });
