@@ -48,6 +48,8 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/items', addApiRoutes);
+app.use('/api/test', testApiRoutes);
+app.use('/test', testRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -72,6 +74,27 @@ app.get('/', (req, res) => {
         .json({ error: err.message });
     });
 
+});
+
+const updatePriorityQuery = require('./db/queries/updatePriority');
+
+
+app.post('/api/test', (req, res) => {
+  // get the newPriorities from the request body
+  const newPriorities = req.body.newPriorities;
+  console.log(newPriorities);
+  // update the priorities in the database
+  Promise.all(newPriorities.map((priority, index) => {
+    return updatePriorityQuery.updatePriority(index + 1, priority);
+  }))
+    .then(() => {
+      // send a response back to the client
+      res.send({ message: 'Priorities updated successfully' });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send({ message: 'Error updating priorities' });
+    });
 });
 
 app.listen(PORT, () => {
