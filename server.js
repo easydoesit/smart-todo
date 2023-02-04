@@ -34,6 +34,11 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const addApiRoutes = require('./routes/items-api');
+
+// Test Routes for getting data from database and rendering it
+const testRoutes = require('./routes/test');
+const testApiRoutes = require('./routes/test-api');
+
 const loginRoutes = require('./routes/login-api');
 const moreRoutes = require('./routes/more');
 
@@ -45,7 +50,6 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/items', addApiRoutes);
 app.use('/more', moreRoutes);
-app.use('/login', loginRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

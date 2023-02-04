@@ -8,106 +8,89 @@
 <body>
   <%- include('partials/nav') %>
   <div class="item_entry">
-    <h3>What would you like to try?</h3>
+    <h3>What do you want to try next?</h3>
     <form class="form-inline" action="/items" method="POST">
-      <div>
-        <input
-          type="text"
-          name="item"
-        />
-        <button type="submit" >ADD</button>
-      </div>
+      <div class="add-form">
+        <input id="item-input" type="text" name="item"/>
+        <button id="add-button" type="submit" >ADD</button>
+    </div>
     </form>
   </div>
   <div class="category-box">
-    <div class="category-header">Restaurants and Cafes</div>
+    <div class="category-header">Restaurants</div>
     <div class="list-box">
       <ul>
         <li class="item">
-          <div>
             <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><span>Need Item Name Here</span><img class="grip" src="/images/gripIcon-01.png">
+              <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
             </form>
-          </div>
         </li>
         <li class="item">
-          <div>
-            <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><span>These are dynamicallycreated</span><img class="grip" src="/images/gripIcon-01.png">
-            </form>
-          </div>
+          <form class="item-form" action="/" method="POST">
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+          </form>
         </li>
       </ul>
-      </div class=category-footer><span>more</span><i class="fa-solid fa-caret-down"></i></div>
-    </div>
+    <div class="category-footer"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
   </div>
+  </div>
+  <div class="category-box">
   <div class="category-header">Movies</div>
     <div class="list-box">
       <ul>
         <li class="item">
-          <div>
-            <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><span>Need Item Name Here</span><img class="grip" src="/images/gripIcon-01.png">
-            </form>
-          </div>
+          <form class="item-form" action="/" method="POST">
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+          </form>
         </li>
         <li class="item">
-          <div>
-            <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><span>These are dynamicallycreated</span><img class="grip" src="/images/gripIcon-01.png">
-            </form>
-          </div>
+          <form class="item-form" action="/" method="POST">
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+          </form>
         </li>
       </ul>
-      </div class="category-footer"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
-    </div class=category-footer><span>more</span><i class="fa-solid fa-caret-down"></i></div>
+      <div class="category-footer"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
     </div>
   </div>
+  <div class="category-box">
   <div class="category-header">Books</div>
     <div class="list-box">
       <ul>
         <li class="item">
-          <div>
-            <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><span>Need Item Name Here</span><img class="grip" src="/images/gripIcon-01.png">
-            </form>
-          </div>
+          <form class="item-form" action="/" method="POST">
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+          </form>
         </li>
         <li class="item">
-          <div>
-            <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><span>These are dynamicallycreated</span><img class="grip" src="/images/gripIcon-01.png">
-            </form>
-          </div>
+          <form class="item-form" action="/" method="POST">
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+          </form>
         </li>
       </ul>
-      </div class=category-footer><span>more</span><i class="fa-solid fa-caret-down"></i></div>
+      <div class="category-footer"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
     </div>
   </div>
+  <div class="category-box">
   <div class="category-header">Products</div>
     <div class="list-box">
       <ul>
         <li class="item">
-          <div>
-            <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><span>Need Item Name Here</span><img class="grip" src="/images/gripIcon-01.png">
-            </form>
-          </div>
+          <form class="item-form" action="/" method="POST">
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+          </form>
         </li>
         <li class="item">
-          <div>
-            <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><span>These are dynamicallycreated</span><img class="grip" src="/images/gripIcon-01.png">
-            </form>
-          </div>
+          <form class="item-form" action="/" method="POST">
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+          </form>
         </li>
       </ul>
-      </div class=category-footer><span>more</span><i class="fa-solid fa-caret-up"></i></div>
+      <div class="category-footer"><span>more</span><i class="fa-solid fa-caret-up"></i></div>
     </div>
   </div>
   <br/>
   <br/>
-  LEFT UPDATE ITEM IN CASE YOU ARE STILL USING IT
+  <!-- LEFT UPDATE ITEM IN CASE YOU ARE STILL USING IT
   <br/>
   <br/>
 <h3>update item</h3>
@@ -142,7 +125,7 @@
       />
       <button type="submit" >Login</button>
     </div>
-  </form>
+  </form> -->
 
 </body>
 
