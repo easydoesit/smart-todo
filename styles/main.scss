@@ -1,3 +1,4 @@
+$font-stack: 'Roboto', normal;
 $nav-color: mediumaquamarine;
 $restaurants-color: lightseagreen;
 $movies-color: cornflowerblue;
@@ -17,6 +18,7 @@ body {
   background: none;
   box-shadow: none;
   color: white;
+  font-family: $font-stack;
   font-size: 18px;
 }
 
@@ -36,6 +38,7 @@ body {
 h3 {
   margin: 0;
   margin-top: 10px;
+  font-family: $font-stack;
 }
 
 #item-input {
@@ -48,6 +51,7 @@ h3 {
   padding-bottom: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
+  font-family: $font-stack;
 }
 
 #add-button {
@@ -63,6 +67,14 @@ h3 {
   padding-right: 1em;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
+  font-family: $font-stack;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
 }
 
 ul {
@@ -90,6 +102,7 @@ ul {
   padding: 3px;
   margin: 5px;
   align-items: center;
+  font-family: $font-stack;
 }
 
 li button {
@@ -98,6 +111,7 @@ li button {
   box-shadow: none;
   color: $nav-color;
   font-size: 24px;
+  font-family: $font-stack;
 }
 
 .navbar {
@@ -114,14 +128,14 @@ li button {
 .category-box {
   width: calc(100% - 20px);
   border: 1px solid lightgray;
-  border-radius: 4px;
   margin: 5px;
 }
 
 .category-header {
   width: 100%;
   font-size: 24px;
-  font-weight: bold;
+  font-family: $font-stack;
+  font-weight:500;
   color: white;
   padding-left: 0.5em;
   padding-top: 0.2em;
@@ -133,6 +147,7 @@ li button {
   display: flex;
   color: white;
   justify-content: center;
+  font-family: $font-stack;
 
 }
 
@@ -159,4 +174,24 @@ li button {
 .products {
   border-color:$products-color;
   background: $products-color;
+}
+
+@media only screen and (min-width: 1024px) {
+  .categories {
+    flex-direction: row;
+  }
+
+  .add-form {
+    flex-direction: row;
+  }
+
+  #item-input {
+    width: calc(50% - 5px);
+  }
+
+  #add-button{
+    margin-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
