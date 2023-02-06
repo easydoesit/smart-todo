@@ -17,77 +17,65 @@
     </form>
   </div>
   <div class="categories">
-  <div class="category-box">
+  <div class="category-box" id="restaurants">
     <div class="category-header restaurants">Restaurants</div>
-    <div class="list-box">
       <ul>
+        <% for (let item in items) { %>
+         <% if (items[item].category_id === 2) { %>
         <li class="item">
             <form class="item-form" action="/" method="POST">
-              <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+              <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span><%= items[item].item_name %></span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
             </form>
         </li>
-        <li class="item">
-          <form class="item-form" action="/" method="POST">
-            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
-          </form>
-        </li>
+        <%  } } %>
       </ul>
     <div class="category-footer restaurants"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
+    <div class="category-footer-open restaurants hidden"><span>more</span><i class="fa-solid fa-caret-up"></i></div>
   </div>
-  </div>
-  <div class="category-box">
+  <div class="category-box" id="movies">
   <div class="category-header movies">Movies</div>
-    <div class="list-box">
       <ul>
+        <% for (let item in items) { %>
+          <% if (items[item].category_id === 1) { %>
         <li class="item">
           <form class="item-form" action="/" method="POST">
-            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span><%= items[item].item_name %></span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
           </form>
         </li>
-        <li class="item">
-          <form class="item-form" action="/" method="POST">
-            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
-          </form>
-        </li>
+        <%  } } %>
       </ul>
       <div class="category-footer movies"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
-    </div>
+      <div class="category-footer-open hidden movies"><span>more</span><i class="fa-solid fa-caret-up"></i></div>
   </div>
-  <div class="category-box">
+  <div class="category-box" id="books">
   <div class="category-header books">Books</div>
-    <div class="list-box">
       <ul>
+        <% for (let item in items) { %>
+          <% if (items[item].category_id === 3) { %>
         <li class="item">
           <form class="item-form" action="/" method="POST">
-            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span><%= items[item].item_name %></span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
           </form>
         </li>
-        <li class="item">
-          <form class="item-form" action="/" method="POST">
-            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
-          </form>
-        </li>
+        <%  } } %>
       </ul>
-      <div class="category-footer books"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
-    </div>
+      <div class="category-footer books" id="books"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
+      <div class="category-footer-open hidden books"><span>more</span><i class="fa-solid fa-caret-up"></i></div>
   </div>
-  <div class="category-box">
+  <div class="category-box" id="products">
   <div class="category-header products">Products</div>
-    <div class="list-box">
       <ul>
+        <% for (let item in items) { %>
+          <% if (items[item].category_id === 4) { %>
         <li class="item">
           <form class="item-form" action="/" method="POST">
-            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
+            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span><%= items[item].item_name %></span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
           </form>
         </li>
-        <li class="item">
-          <form class="item-form" action="/" method="POST">
-            <button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>Need Item Name Here</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div>
-          </form>
-        </li>
+        <%  } } %>
       </ul>
-      <div class="category-footer products"><span>more</span><i class="fa-solid fa-caret-up"></i></div>
-    </div>
+      <div class="category-footer products"><span>more</span><i class="fa-solid fa-caret-down"></i></div>
+      <div class="category-footer-open hidden products" ><span>more</span><i class="fa-solid fa-caret-up"></i></div>
   </div>
   </div>
   <!-- LEFT UPDATE ITEM IN CASE YOU ARE STILL USING IT

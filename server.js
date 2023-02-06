@@ -65,11 +65,16 @@ app.get('/', (req, res) => {
 
   //make sql query that adds item and catagory
   getItemsQuery.getItems()
-    // .then(users => {
-    //   res.json({ users });
+    // .then(items => {
+    //   //res.json({ items });
+    //   console.log(items);
     // })
-    .then(() => {
-      res.render('index');
+    .then(data => {
+      console.log(data);
+      const templateItems = {
+        items: data
+      };
+      res.render('index', templateItems);
     })
     .catch(err => {
       res

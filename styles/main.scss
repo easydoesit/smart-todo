@@ -55,7 +55,7 @@ h3 {
 }
 
 #add-button {
-  width:fit-content;
+  width: fit-content;
   border: 0;
   border-radius: 4px;
   background: $nav-color;
@@ -73,17 +73,18 @@ h3 {
 .categories {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width:100%;
+  align-items: flex-start;
+  width: 100%;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
-.item-form{
+.item-form {
   display: flex;
   flex-direction: row;
 }
@@ -135,7 +136,7 @@ li button {
   width: 100%;
   font-size: 24px;
   font-family: $font-stack;
-  font-weight:500;
+  font-weight: 500;
   color: white;
   padding-left: 0.5em;
   padding-top: 0.2em;
@@ -143,7 +144,8 @@ li button {
 
 }
 
-.category-footer {
+.category-footer,
+.category-footer-open {
   display: flex;
   color: white;
   justify-content: center;
@@ -162,7 +164,7 @@ li button {
 }
 
 .movies {
-  border-color:$movies-color;
+  border-color: $movies-color;
   background: $movies-color;
 }
 
@@ -172,8 +174,12 @@ li button {
 }
 
 .products {
-  border-color:$products-color;
+  border-color: $products-color;
   background: $products-color;
+}
+
+.hidden {
+  display: none;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -189,7 +195,7 @@ li button {
     width: calc(50% - 5px);
   }
 
-  #add-button{
+  #add-button {
     margin-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
