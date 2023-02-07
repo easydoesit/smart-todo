@@ -12,10 +12,9 @@ $(() => {
       data: form.serialize(),
     })
       .done((response) => {
-        console.log(response);
         $('#item-input').val('');
 
-        const $list = $(`#${response.category}s ul`);
+        const $list = $(`#${response.category}s-list`);
 
         $list.append(`<li class="item"><form class="item-form" action="/" method="POST"><button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>${response.item}</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div></form></li>`);
 
