@@ -8,7 +8,6 @@ const updatePriority = (itemID, priority) => {
 
   return db.query(query, values)
     .then(res => {
-      console.log(res.rows);
       return res.rows;
     })
     .catch(err => {
