@@ -81,17 +81,21 @@ app.get('/', (req, res) => {
 const { login } = require('./db/queries/login');
 
 const updatePriorityQuery = require('./db/queries/updatePriority');
+const updateCategoryIDQuery = require('./db/queries/updateCategory');
 
-app.post('/update-priorities', (req, res) => {
+app.post('/update-item-details', (req, res) => {
   let priorities = req.body.priorities;
   Promise.all(
-    priorities.map(({ itemID, priority }) => {
-      return updatePriorityQuery.updatePriority(itemID, priority);
+    priorities.map(({ itemID, categoryID, priority }) => {
+      return Promise.all([
+        updatePriorityQuery.updatePriority(itemID, priority),
+        updateCategoryIDQuery.updateCategory(itemID, categoryID)
+      ]);
     })
   )
     .then(() => {
-      console.log('Priorities updated');
-      res.send('Priorities updated');
+      console.log('Item details updated');
+      res.send('Item details updated');
     })
     .catch(err => {
       console.error(err);
