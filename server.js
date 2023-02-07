@@ -34,11 +34,6 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const addApiRoutes = require('./routes/items-api');
-
-// Test Routes for getting data from database and rendering it
-const testRoutes = require('./routes/test');
-const testApiRoutes = require('./routes/test-api');
-
 const loginRoutes = require('./routes/login-api');
 
 
@@ -50,8 +45,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/items', addApiRoutes);
 app.use('/login', loginRoutes);
-app.use('/api/test', testApiRoutes);
-app.use('/test', testRoutes);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -73,6 +67,7 @@ app.get('/', (req, res) => {
       const templateItems = {
         items: data
       };
+      console.log(templateItems);
       res.render('index', templateItems);
     })
     .catch(err => {
@@ -83,25 +78,24 @@ app.get('/', (req, res) => {
 
 });
 
-const updatePriorityQuery = require('./db/queries/updatePriority');
 const { login } = require('./db/queries/login');
 
+const updatePriorityQuery = require('./db/queries/updatePriority');
 
-app.post('/api/test', (req, res) => {
-  // get the newPriorities from the request body
-  const newPriorities = req.body.newPriorities;
-  console.log(newPriorities);
-  // update the priorities in the database
-  Promise.all(newPriorities.map((priority, index) => {
-    return updatePriorityQuery.updatePriority(index + 1, priority);
-  }))
+app.post('/update-priorities', (req, res) => {
+  let priorities = req.body.priorities;
+  Promise.all(
+    priorities.map(({ itemID, priority }) => {
+      return updatePriorityQuery.updatePriority(itemID, priority);
+    })
+  )
     .then(() => {
-      // send a response back to the client
-      res.send({ message: 'Priorities updated successfully' });
+      console.log('Priorities updated');
+      res.send('Priorities updated');
     })
     .catch(err => {
       console.error(err);
-      res.status(500).send({ message: 'Error updating priorities' });
+      res.status(500).send(err.message);
     });
 });
 
