@@ -17,10 +17,8 @@ const { categoryPicker } = require('../apis/categoryPicker');
 router.post('/', (req, res) => {
   categoryPicker(req.body.item, 'Calgary', req.cookies["userid"])
     .then((data) => {
-      //console.log("Still happening?");
-      //console.log(data);
-      res.redirect('/');
-      //res.json(data);
+      const itemObject = {"item" : req.body.item, "category" : data};
+      res.send(itemObject);
     })
 });
 

@@ -7,32 +7,22 @@ $(() => {
     var url = form.attr('action');
     $.ajax({
       type: 'POST',
-      //url: '/api/users',
       url: url,
       data: form.serialize(),
-      // success: function(data) {
-
-      //     // Ajax call completed successfully
-      //     alert("Form Submited Successfully");
-      // },
-      // error: function(data) {
-
-      //     // Some error in ajax call
-      //     alert("some Error");
-      // }
     })
       .done((response) => {
 
-        //console.log('ajax button');
-        //console.log(response);
-        location.reload(true);
+        console.log('ajax button');
+        console.log(response);
+        console.log(response.category);
+        //location.reload(true);
 
-        // const $usersList = $('#users');
-        // $usersList.empty();
+        $('#item-input').val('');
 
-        // for (const user of response.users) {
-        //   $(`<li class="user">`).text(user.name).appendTo($usersList);
-        // }
+        const $list = $(`#${response.category}s ul`);
+
+        $list.append(`<li class="item"><form class="item-form" action="/" method="POST"><button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>${response.item}</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div></form></li>`);
+
       });
   });
 });

@@ -19,7 +19,7 @@
   <div class="categories">
   <div class="category-box" id="restaurants">
     <div class="category-header restaurants">Restaurants</div>
-      <ul>
+      <ul id="restaurants-list">
         <% for (let item in items) { %>
          <% if (items[item].category_id === 2) { %>
         <li class="item">
@@ -34,7 +34,7 @@
   </div>
   <div class="category-box" id="movies">
   <div class="category-header movies">Movies</div>
-      <ul>
+      <ul id="movies-list">
         <% for (let item in items) { %>
           <% if (items[item].category_id === 1) { %>
         <li class="item">
@@ -49,7 +49,7 @@
   </div>
   <div class="category-box" id="books">
   <div class="category-header books">Books</div>
-      <ul>
+      <ul id="books-list">
         <% for (let item in items) { %>
           <% if (items[item].category_id === 3) { %>
         <li class="item">
@@ -64,7 +64,7 @@
   </div>
   <div class="category-box" id="products">
   <div class="category-header products">Products</div>
-      <ul>
+      <ul id="products-list">
         <% for (let item in items) { %>
           <% if (items[item].category_id === 4) { %>
         <li class="item">
