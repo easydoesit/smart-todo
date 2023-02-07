@@ -1,5 +1,6 @@
 // Client facing scripts here
 $(() => {
+
   $('#add-button').on('click', (e) => {
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -11,7 +12,7 @@ $(() => {
       data: form.serialize(),
     })
       .done((response) => {
-
+        console.log(response);
         $('#item-input').val('');
 
         const $list = $(`#${response.category}s ul`);
