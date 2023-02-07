@@ -63,11 +63,11 @@ app.get('/', (req, res) => {
     //   console.log(items);
     // })
     .then(data => {
-      console.log(data);
+      //console.log(data);
       const templateItems = {
         items: data
       };
-      console.log(templateItems);
+      //console.log(templateItems);
       res.render('index', templateItems);
     })
     .catch(err => {

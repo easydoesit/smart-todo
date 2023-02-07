@@ -2,7 +2,7 @@ $(() => {
   $('.item-button').on('click', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
-    const form = $(".item-form");
+    const form = $(this).parent();
     const url = form.attr('action');
     console.log(url);
     $.ajax({
