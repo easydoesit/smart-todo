@@ -23,8 +23,8 @@
           <% for (let item in items) { %>
             <% if (items[item].category_id === 2) { %>
               <li class="item">
-                <form class="item-form" action="/" method="POST" data-id="<%= items[item].id %>">
-                  <button><i class="fa-solid fa-square-check"></i></button>
+                <form class="item-form" action="/items/<%= items[item].id %>/delete" method="POST" data-id="<%= items[item].id %>">
+                  <button class="item-button"><i class="fa-solid fa-square-check"></i></button>
                   <div class="item-divider">
                     <span>
                       <%= items[item].item_name %>

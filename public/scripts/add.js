@@ -3,8 +3,8 @@ $(() => {
   $('#add-button').on('click', (e) => {
     e.preventDefault();
     e.stopImmediatePropagation();
-    var form = $("#add-item-form");
-    var url = form.attr('action');
+    const form = $("#add-item-form");
+    const url = form.attr('action');
     $.ajax({
       type: 'POST',
       url: url,

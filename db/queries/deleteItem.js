@@ -3,7 +3,9 @@ const db = require('../connection');
 const deleteItem = (itemID) => {
   console.log('Delete Item ID = ' + itemID);
 
-  const query = `DELETE FROM items WHERE id = $1;`;
+  const query = `UPDATE items
+  SET item_status = false
+  WHERE id = $1;`;
 
   const values = [itemID];
 
