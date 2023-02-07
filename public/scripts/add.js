@@ -12,11 +12,6 @@ $(() => {
     })
       .done((response) => {
 
-        console.log('ajax button');
-        console.log(response);
-        console.log(response.category);
-        //location.reload(true);
-
         $('#item-input').val('');
 
         const $list = $(`#${response.category}s ul`);
