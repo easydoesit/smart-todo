@@ -15,10 +15,13 @@ $(document).ready(function() {
       const $idParent = $(this).parent().attr('id');
       const liLength = $(`#${$idParent} > ul > li`).length;
       const fullHeight = (startConditions.startHeight / 2) * liLength;
-      $(`#${$idParent} ul`).height(fullHeight);
+      //$(`#${$idParent} ul`).height(fullHeight);
+      $(`#${$idParent} ul`).height('auto');
       $(`#${$idParent}`).siblings('.category-box').children('ul').height(startConditions.liMargin / 2);
       $(this).addClass('hidden');
       $(this).siblings('.category-footer-open').removeClass('hidden');
+      $(`#${$idParent}`).siblings('.category-box').children('.category-footer').removeClass('hidden');
+      $(`#${$idParent}`).siblings('.category-box').children('.category-footer-open').addClass('hidden');
 
     });
   };
@@ -31,6 +34,8 @@ $(document).ready(function() {
       $(`#${$idParent}`).siblings('.category-box').children('ul').height(startConditions.startHeight);
       $(this).addClass('hidden');
       $(this).siblings('.category-footer').removeClass('hidden');
+      $(`#${$idParent}`).siblings('.category-box').children('.category-footer').removeClass('hidden');
+      $(`#${$idParent}`).siblings('.category-box').children('.category-footer-open').addClass('hidden');
 
     });
   };
