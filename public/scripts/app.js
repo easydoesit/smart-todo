@@ -35,6 +35,21 @@ $(document).ready(function() {
     });
   };
 
+  //function to update the "No items found" message
+  function updateNoItemsMessage() {
+    // Loop through each category
+    $('.category-box').each(function() {
+      var categoryId = $(this).attr('id');
+      var noItemsMessage = $('#noItemsMessage', this);
+      //show or hide the "No items found" message based on whether the category has any items
+      if ($(this).find('li.item').length > 0) {
+        noItemsMessage.hide();
+      } else {
+        noItemsMessage.show();
+      }
+    });
+  }
+
   //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
 
   $(".sortable").sortable({
@@ -42,28 +57,36 @@ $(document).ready(function() {
     handle: ".grip",
     update: function (event, ui) {
       const $list = $(this);
-      const form = ui.item.find('form');
-      const itemID = form.data('id');
-      let categoryID = '';
+      const form = ui.item.find("form");
+      const itemID = form.data("id");
+      let categoryID = "";
       const categories = {
         restaurants: 2,
         movies: 1,
         books: 3,
-        products: 4
+        products: 4,
       };
       for (const [key, value] of Object.entries(categories)) {
-        if (key === $list.closest('.category-box').attr('id')) {
+        if (key === $list.closest(".category-box").attr("id")) {
           categoryID = value;
         }
       }
-      const priorities = $list.find('li ').map(function (index, element) {
-        const itemID = $(element).find('form').data('id');
-        return { itemID, categoryID, priority: index + 1 };
-      })
-        .get();
-      //make an AJAX post request to the server with the updated items' IDs, category IDs and priorities
-      $.post('/update-item-details', { priorities });
-    }
+      const priorities = $list
+        .find("li")
+        .map(function (index, element) {
+          const itemForm = $(element).find("form");
+          if (itemForm.length) {
+            const itemID = itemForm.data("id");
+            return { itemID, categoryID, priority: index + 1 };
+          }
+          return null;
+        })
+        .get()
+      if (priorities.length) {
+        $.post("/update-item-details", { priorities });
+        updateNoItemsMessage();
+      }
+    },
   });
 
   if ($(window).width() < 1024) {
