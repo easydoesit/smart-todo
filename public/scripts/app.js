@@ -5,11 +5,18 @@ $(document).ready(function() {
   startConditions.liHeight = $('li').outerHeight();
   startConditions.startHeight = (startConditions.liHeight * 2) + startConditions.liMargin + (startConditions.liMargin / 2);
 
+  // this is the animation overlay it stays hidden until called.
   $(".overlay").addClass('hidden');
+
+  //this animation function will fire on the sorting of the category. Takes category id
+  const animateCatBox = function(id) {
+
+  };
   //this is the mobileStart conditions
   const mobileStart = function() {
     $("ul").height(startConditions.startHeight);
   };
+
   //this listener expands the category box and shrinks all other categories
   const mobileListenerExpand = function() {
     $(".category-footer").on('click', function() {
@@ -57,11 +64,13 @@ $(document).ready(function() {
   };
 
   //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
+  //let alertShown = false;
 
   $(".sortable").sortable({
     connectWith: ".sortable",
     handle: ".grip",
     update: function(event, ui) {
+      alert("check");
       const $list = $(this);
       const form = ui.item.find("form");
       const itemID = form.data("id");
@@ -120,7 +129,6 @@ $(document).ready(function() {
         $('#products-list').height(48);
         updateNoItemsMessage();
       }
-
     },
   });
 
