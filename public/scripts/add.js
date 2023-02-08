@@ -23,10 +23,12 @@ $(() => {
         $list.append(`<li class="item"><form class="item-form" action="/" method="POST"><button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>${response.item}</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div></form></li>`);
 
         $(`#${response.category}s-list`).height('auto');
-        $(`#${response.category}s-list`).parent().siblings('.category-box').children('ul').height(5);
-        $(`#${response.category}s-list`).siblings('.category-footer').addClass('hidden');
-        $(`#${response.category}s-list`).siblings('.category-footer-open').removeClass('hidden');
 
+        if ($(window).width() < 1024) {
+          $(`#${response.category}s-list`).parent().siblings('.category-box').children('ul').height(5);
+          $(`#${response.category}s-list`).siblings('.category-footer').addClass('hidden');
+          $(`#${response.category}s-list`).siblings('.category-footer-open').removeClass('hidden');
+        }
       });
     }
   });
