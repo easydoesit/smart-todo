@@ -48,89 +48,42 @@ $(document).ready(function() {
     });
   };
 
-  //function to update the "No items found" message
-  const updateNoItemsMessage = function() {
-    // Loop through each category
-    $('.category-box').each(function() {
-      let categoryId = $(this).attr('id');
-      let noItemsMessage = $('#noItemsMessage', this);
-      //show or hide the "No items found" message based on whether the category has any items
-      if ($(this).find('li.item').length > 0) {
-        noItemsMessage.hide();
-      } else {
-        noItemsMessage.show();
-      }
-    });
-  };
+    //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
 
-  //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
-  //let alertShown = false;
-
-  $(".sortable").sortable({
-    connectWith: ".sortable",
-    handle: ".grip",
-    update: function(event, ui) {
-      alert("check");
+  $('.sortable').sortable({
+    connectWith: '.sortable',
+    handle: '.grip',
+    update(event, ui) {
       const $list = $(this);
-      const form = ui.item.find("form");
-      const itemID = form.data("id");
-      let categoryID = "";
+      const form = ui.item.find('form');
+      const itemID = form.data('id');
+      let categoryID = '';
       const categories = {
         restaurants: 2,
         movies: 1,
         books: 3,
         products: 4,
       };
-      for (const [key, value] of Object.entries(categories)) {
-        if (key === $list.closest(".category-box").attr("id")) {
-          categoryID = value;
-        }
-      }
+      categoryID = categories[$list.closest('.category-box').attr('id')] || 0;
       const priorities = $list
-        .find("li")
-        .map(function(index, element) {
-          const itemForm = $(element).find("form");
+        .find('li')
+        .map((index, element) => {
+          const itemForm = $(element).find('form');
           if (itemForm.length) {
-            const itemID = itemForm.data("id");
+            const itemID = itemForm.data('id');
             return { itemID, categoryID, priority: index + 1 };
           }
           return null;
         })
         .get();
       if (priorities.length) {
-        $.post("/update-item-details", { priorities });
-        updateNoItemsMessage();
-      }
-
-      if ($('#restaurants-list li').length >= 1) {
-        $('#restaurants-list').height('auto');
-      } else {
-        $('#restaurants-list').height(48);
-        updateNoItemsMessage();
-      }
-
-      if ($('#movies-list li').length >= 1) {
-        $('#movies-list').height('auto');
-      } else {
-        $('#movies-list').height(48);
-        updateNoItemsMessage();
-      }
-
-      if ($('#books-list li').length >= 1) {
-        $('#books-list').height('auto');
-      } else {
-        $('#books-list').height(48);
-        updateNoItemsMessage();
-      }
-
-      if ($('#products-list li').length >= 1) {
-        $('#products-list').height('auto');
-      } else {
-        $('#products-list').height(48);
-        updateNoItemsMessage();
+        $.post('/update-item-details', { priorities }, function() {
+          alert('Your list has been updated!');
+        });
       }
     },
   });
+
 
   if ($(window).width() < 1024) {
     mobileStart();
