@@ -65,14 +65,22 @@ $(document).ready(function() {
     }
   });
 
-  if ($(window).width() <= 1024) {
+  if ($(window).width() < 1024) {
     mobileStart();
     mobileListenerExpand();
     mobileListenerShrink();
-  } else {
-    $('.category-footer').remove();
-    $('.category-footer-open').remove();
   }
 
+  $(window).on('resize', function(){
+    var win = $(this);
+    if (win.width() >= 1024) {
+      $("ul").height('auto');
+    }
+    if (win.width() < 1024) {
+      mobileStart();
+      mobileListenerExpand();
+      mobileListenerShrink();
+    }
+  });
 
 });
