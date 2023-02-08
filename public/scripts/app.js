@@ -35,10 +35,11 @@ $(document).ready(function() {
     });
   };
 
-    //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
+  //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
 
   $(".sortable").sortable({
     connectWith: ".sortable",
+    handle: ".grip",
     update: function (event, ui) {
       const $list = $(this);
       const form = ui.item.find('form');
@@ -71,7 +72,7 @@ $(document).ready(function() {
     mobileListenerShrink();
   }
 
-  $(window).on('resize', function(){
+  $(window).on('resize', function() {
     var win = $(this);
     if (win.width() >= 1024) {
       $("ul").height('auto');
