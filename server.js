@@ -80,17 +80,13 @@ app.get('/', (req, res) => {
 
 const { login } = require('./db/queries/login');
 
-const updatePriorityQuery = require('./db/queries/updatePriority');
-const updateCategoryIDQuery = require('./db/queries/updateCategory');
+const updateDetailsQuery = require('./db/queries/updateDetails');
 
 app.post('/update-item-details', (req, res) => {
   let priorities = req.body.priorities;
   Promise.all(
     priorities.map(({ itemID, categoryID, priority }) => {
-      return Promise.all([
-        updatePriorityQuery.updatePriority(itemID, priority),
-        updateCategoryIDQuery.updateCategory(itemID, categoryID)
-      ]);
+      return updateDetailsQuery.updateDetails(itemID, categoryID, priority);
     })
   )
     .then(() => {
@@ -102,6 +98,7 @@ app.post('/update-item-details', (req, res) => {
       res.status(500).send(err.message);
     });
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
