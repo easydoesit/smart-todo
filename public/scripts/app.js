@@ -15,10 +15,13 @@ $(document).ready(function() {
       const $idParent = $(this).parent().attr('id');
       const liLength = $(`#${$idParent} > ul > li`).length;
       const fullHeight = (startConditions.startHeight / 2) * liLength;
-      $(`#${$idParent} ul`).height(fullHeight);
+      //$(`#${$idParent} ul`).height(fullHeight);
+      $(`#${$idParent} ul`).height('auto');
       $(`#${$idParent}`).siblings('.category-box').children('ul').height(startConditions.liMargin / 2);
       $(this).addClass('hidden');
       $(this).siblings('.category-footer-open').removeClass('hidden');
+      $(`#${$idParent}`).siblings('.category-box').children('.category-footer').removeClass('hidden');
+      $(`#${$idParent}`).siblings('.category-box').children('.category-footer-open').addClass('hidden');
 
     });
   };
@@ -31,6 +34,8 @@ $(document).ready(function() {
       $(`#${$idParent}`).siblings('.category-box').children('ul').height(startConditions.startHeight);
       $(this).addClass('hidden');
       $(this).siblings('.category-footer').removeClass('hidden');
+      $(`#${$idParent}`).siblings('.category-box').children('.category-footer').removeClass('hidden');
+      $(`#${$idParent}`).siblings('.category-box').children('.category-footer-open').addClass('hidden');
 
     });
   };
@@ -93,14 +98,62 @@ $(document).ready(function() {
     mobileStart();
     mobileListenerExpand();
     mobileListenerShrink();
+  } else if ($(window).width() >= 1024) {
+
+    if ($('#restaurants-list li').length >= 1) {
+      $('#restaurants-list').height('auto');
+    } else {
+      $('#restaurants-list').height(48);
+    }
+
+    if ($('#movies-list li').length >= 1) {
+      $('#movies-list').height('auto');
+    } else {
+      $('#movies-list').height(48);
+    }
+
+    if ($('#books-list li').length >= 1) {
+      $('#books-list').height('auto');
+    } else {
+      $('#books-list').height(48);
+    }
+
+    if ($('#products-list li').length >= 1) {
+      $('#products-list').height('auto');
+    } else {
+      $('#products-list').height(48);
+    }
   }
 
   $(window).on('resize', function() {
     var win = $(this);
     if (win.width() >= 1024) {
-      $("ul").height('auto');
-    }
-    if (win.width() < 1024) {
+      //$('ul').height('auto');
+
+      if ($('#restaurants-list li').length >= 1) {
+        $('#restaurants-list').height('auto');
+      } else {
+        $('#restaurants-list').height(48);
+      }
+
+      if ($('#movies-list li').length >= 1) {
+        $('#movies-list').height('auto');
+      } else {
+        $('#movies-list').height(48);
+      }
+
+      if ($('#books-list li').length >= 1) {
+        $('#books-list').height('auto');
+      } else {
+        $('#books-list').height(48);
+      }
+
+      if ($('#products-list li').length >= 1) {
+        $('#products-list').height('auto');
+      } else {
+        $('#products-list').height(48);
+      }
+    } else if (win.width() < 1024) {
       mobileStart();
       mobileListenerExpand();
       mobileListenerShrink();
