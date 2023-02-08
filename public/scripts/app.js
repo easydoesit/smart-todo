@@ -5,6 +5,7 @@ $(document).ready(function() {
   startConditions.liHeight = $('li').outerHeight();
   startConditions.startHeight = (startConditions.liHeight * 2) + startConditions.liMargin + (startConditions.liMargin / 2);
 
+  $(".overlay").addClass('hidden');
   //this is the mobileStart conditions
   const mobileStart = function() {
     $("ul").height(startConditions.startHeight);
@@ -44,8 +45,8 @@ $(document).ready(function() {
   function updateNoItemsMessage() {
     // Loop through each category
     $('.category-box').each(function() {
-      var categoryId = $(this).attr('id');
-      var noItemsMessage = $('#noItemsMessage', this);
+      let categoryId = $(this).attr('id');
+      let noItemsMessage = $('#noItemsMessage', this);
       //show or hide the "No items found" message based on whether the category has any items
       if ($(this).find('li.item').length > 0) {
         noItemsMessage.hide();
@@ -60,7 +61,7 @@ $(document).ready(function() {
   $(".sortable").sortable({
     connectWith: ".sortable",
     handle: ".grip",
-    update: function (event, ui) {
+    update: function(event, ui) {
       const $list = $(this);
       const form = ui.item.find("form");
       const itemID = form.data("id");
@@ -78,7 +79,7 @@ $(document).ready(function() {
       }
       const priorities = $list
         .find("li")
-        .map(function (index, element) {
+        .map(function(index, element) {
           const itemForm = $(element).find("form");
           if (itemForm.length) {
             const itemID = itemForm.data("id");
@@ -86,7 +87,7 @@ $(document).ready(function() {
           }
           return null;
         })
-        .get()
+        .get();
       if (priorities.length) {
         $.post("/update-item-details", { priorities });
         updateNoItemsMessage();
@@ -156,7 +157,7 @@ $(document).ready(function() {
   // }
 
   $(window).on('resize', function() {
-    var win = $(this);
+    let win = $(this);
     if (win.width() >= 1024) {
       //$('ul').height('auto');
 
