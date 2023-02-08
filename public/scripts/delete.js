@@ -12,12 +12,11 @@ $(() => {
     })
       .done((response) => {
 
-        if($(this).parent().parent().length >= 1) {
+        if($(this).parent().parent().length < 1) {
           $(this).parent().parent().parent().height(48);
         }
 
         $(this).parent().parent().remove();
-
 
       });
 

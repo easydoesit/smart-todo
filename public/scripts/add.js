@@ -10,13 +10,15 @@ $(() => {
     } else{
       const form = $("#add-item-form");
       const url = form.attr('action');
+      const formData = form.serialize();
+      $('#item-input').val('');
       $.ajax({
         type: 'POST',
         url: url,
-        data: form.serialize(),
+        data: formData,
       })
       .done((response) => {
-        $('#item-input').val('');
+        //$('#item-input').val('');
 
         const $list = $(`#${response.category}s-list`);
 
