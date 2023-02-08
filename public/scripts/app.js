@@ -42,7 +42,7 @@ $(document).ready(function() {
   };
 
   //function to update the "No items found" message
-  function updateNoItemsMessage() {
+  const updateNoItemsMessage = function() {
     // Loop through each category
     $('.category-box').each(function() {
       let categoryId = $(this).attr('id');
@@ -54,7 +54,7 @@ $(document).ready(function() {
         noItemsMessage.show();
       }
     });
-  }
+  };
 
   //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
 
