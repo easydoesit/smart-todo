@@ -75,12 +75,14 @@ $(document).ready(function() {
           }
         })
         .get();
+      if (priorities.length) {
         $('#loading').show();
         $.post('/update-item-details', { priorities }).done(function () {
           setTimeout(function () {
             $('#loading').hide();
           }, 1000);
         });
+      }
       if ($(window).width() >= 1024) {
         if ($('#restaurants-list li').length >= 1) {
           $('#restaurants-list').height('auto');
@@ -108,7 +110,6 @@ $(document).ready(function() {
       }
     },
   });
-
 
   if ($(window).width() < 1024) {
     mobileStart();
