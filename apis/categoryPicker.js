@@ -66,8 +66,14 @@ const categoryPicker = function(item, city, userID) {
 
     })
     .then((data) => {
-      addItem(userID, item, data); // pushes userID, item, and Category to Database.
-      return data; //returns the final category
+
+      return addItem(userID, item, data)  // pushes userID, item, and Category to Database.
+      .then((itemID) => {
+        let itemObject = {"category":data, "itemID":itemID};
+
+        return itemObject; //returns the category and itemID
+      })
+
     });
 };
 
