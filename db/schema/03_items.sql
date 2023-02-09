@@ -9,6 +9,6 @@ item_name TEXT NOT NULL,
 created_date TIMESTAMP NOT NULL DEFAULT NOW(),
 due_date TIMESTAMP,
 completed_date TIMESTAMP,
-priority INTEGER CHECK (priority >= 0),
+priority INTEGER,
 item_status BOOLEAN NOT NULL DEFAULT TRUE
 );

@@ -9,9 +9,29 @@ $(document).ready(function() {
   $(".overlay").addClass('hidden');
 
   //this animation function will fire on the sorting of the category. Takes category id
-  const animateCatBox = function(id) {
+  //this animation function will fire on the sorting of the category. Takes category id
+  const animateCatBox = (id => {
+    const passID = id;
+    let i = 0;
+    const flashdiv = setInterval(function() {
+      console.log(passID);
+      const header = $(`#${passID}.category-header`);
+      const footer = $(`#${passID}.category-footer`);
+      i++;
+      console.log(header);
 
-  };
+      header.addClass('blink');
+      footer.addClass('blink');
+
+      setTimeout(function() {
+        header.removeClass('blink');
+        footer.removeClass('blink');
+      },150);
+
+      if (i === 4) clearInterval(flashdiv);
+    },300, passID);
+
+  });
   //this is the mobileStart conditions
   const mobileStart = function() {
     $("ul").height(startConditions.startHeight);
@@ -53,6 +73,9 @@ $(document).ready(function() {
   $('.sortable').sortable({
     connectWith: '.sortable',
     handle: '.grip',
+    stop: function(event, ui) {
+      animateCatBox(categoryID);
+    },
     update(event, ui) {
       const $list = $(this);
       const form = ui.item.find('form');
@@ -76,11 +99,8 @@ $(document).ready(function() {
         })
         .get();
       if (priorities.length) {
-        $('#loading').show();
-        $.post('/update-item-details', { priorities }).done(function () {
-          setTimeout(function () {
-            $('#loading').hide();
-          }, 1000);
+        $.post('/update-item-details', { priorities }).done(function() {
+          // animateCatBox(categoryID);
         });
       }
       if ($(window).width() >= 1024) {

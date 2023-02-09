@@ -37,7 +37,7 @@
           category = 'products'
         } %>
         <div class="category-box" id="<%= category %>">
-        <div class="category-header <%= category %>"><%= category.charAt(0).toUpperCase() + category.slice(1)  %></div>
+        <div class="category-header <%= category %>" id="<%= categories[i]%>"><%= category.charAt(0).toUpperCase() + category.slice(1)  %></div>
         <ul class="sortable" id="<%= category %>-list">
           <% for (let item in items) { %>
             <% if (items[item].category_id === categories[i]) { %>
@@ -54,10 +54,10 @@
               </li>
               <% } } %>
         </ul>
-        <div class="category-footer <%= category %>">
+        <div class="category-footer <%= category %>" id="<%= categories[i]%>">
           <span>more</span><i class="fa-solid fa-caret-down"></i>
         </div>
-        <div class="category-footer-open <%= category %> hidden">
+        <div class="category-footer-open <%= category %> hidden"  id="<%= categories[i]%>">
           <span>more</span><i class="fa-solid fa-caret-up"></i>
         </div>
       </div>
