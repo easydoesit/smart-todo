@@ -17,17 +17,13 @@ const { categoryPicker } = require('../apis/categoryPicker');
 router.post('/', (req, res) => {
   categoryPicker(req.body.item, 'Calgary', req.cookies["userid"])
   .then((data) => {
-    //console.log(data);
     const itemObject = {"item" : req.body.item, "category" : data.category, "itemID":data.itemID};
-    console.log(itemObject);
     res.send(itemObject);
   })
 });
 
 //Route for updating an item
 router.post("/:id", (req, res) => {
-
-  console.log('Item id = ' + req.params.id);
 
   //make sql query that updates item to the user selected catagory
   updateItemQuery.updateItem(req.params.id, req.body.category)
@@ -42,29 +38,21 @@ router.post("/:id", (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
-
 });
 
 //Route for deleting an item
 router.post("/:id/delete", (req, res) => {
 
-  console.log('Delete Item id = ' + req.params.id);
-
   //make sql query that deletes item from the database
   deleteItemQuery.deleteItem(req.params.id)
     .then(data => {
-      //res.json({ data });
-      res.send("testing evil");
+      res.send("item deleted");
     })
-    // .then(() => {
-    //   res.redirect('/');
-    // })
     .catch(err => {
       res
         .status(500)
         .json({ error: err.message });
     });
-
 });
 
 

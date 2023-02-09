@@ -11,6 +11,7 @@ const addItem = (userID, item, category, priority) => {
 
   return db.query(query, values)
     .then(res => {
+      //return new itemID
       return res.rows[0].id;
     })
     .catch(err => {

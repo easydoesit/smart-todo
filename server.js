@@ -30,9 +30,6 @@ app.use(cookieParser());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const widgetApiRoutes = require('./routes/widgets-api');
-const usersRoutes = require('./routes/users');
 const addApiRoutes = require('./routes/items-api');
 const loginRoutes = require('./routes/login-api');
 
@@ -40,9 +37,6 @@ const loginRoutes = require('./routes/login-api');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/api/widgets', widgetApiRoutes);
-app.use('/users', usersRoutes);
 app.use('/items', addApiRoutes);
 app.use('/login', loginRoutes);
 
@@ -58,16 +52,10 @@ app.get('/', (req, res) => {
 
   //make sql query that adds item and catagory
   getItemsQuery.getItems()
-    // .then(items => {
-    //   //res.json({ items });
-    //   console.log(items);
-    // })
     .then(data => {
-      //console.log(data);
       const templateItems = {
         items: data
       };
-      //console.log(templateItems);
       res.render('index', templateItems);
     })
     .catch(err => {

@@ -37,9 +37,7 @@ $(() => {
             $(`#${response.category}s-list`).siblings('.category-footer-open').removeClass('hidden');
           }
         });
-
       }
-
     }
   });
 });

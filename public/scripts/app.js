@@ -78,6 +78,45 @@ $(document).ready(function() {
       const newCat = ui.item.parent().siblings('.category-header').attr('id');
       //console.log(newCat);
       animateCatBox(newCat);
+
+      //expand selected category and shrink others
+      if (newCat == 1) {
+        $(`#movies-list`).height('auto');
+        if ($(window).width() < 1024) {
+          $(`#movies-list`).parent().siblings('.category-box').children('ul').height(5);
+          $(`#movies-list`).parent().siblings('.category-box').children('.category-footer').removeClass('hidden');
+          $(`#movies-list`).parent().siblings('.category-box').children('.category-footer-open').addClass('hidden');
+          $(`#movies-list`).siblings('.category-footer').addClass('hidden');
+          $(`#movies-list`).siblings('.category-footer-open').removeClass('hidden');
+        }
+      } else if (newCat == 2) {
+        $(`#restaurants-list`).height('auto');
+        if ($(window).width() < 1024) {
+          $(`#restaurants-list`).parent().siblings('.category-box').children('ul').height(5);
+          $(`#restaurants-list`).parent().siblings('.category-box').children('.category-footer').removeClass('hidden');
+          $(`#restaurants-list`).parent().siblings('.category-box').children('.category-footer-open').addClass('hidden');
+          $(`#restaurants-list`).siblings('.category-footer').addClass('hidden');
+          $(`#restaurants-list`).siblings('.category-footer-open').removeClass('hidden');
+        }
+      } else if (newCat == 3) {
+        $(`#books-list`).height('auto');
+        if ($(window).width() < 1024) {
+          $(`#books-list`).parent().siblings('.category-box').children('ul').height(5);
+          $(`#books-list`).parent().siblings('.category-box').children('.category-footer').removeClass('hidden');
+          $(`#books-list`).parent().siblings('.category-box').children('.category-footer-open').addClass('hidden');
+          $(`#books-list`).siblings('.category-footer').addClass('hidden');
+          $(`#books-list`).siblings('.category-footer-open').removeClass('hidden');
+        }
+      } else if (newCat == 4) {
+        $(`#products-list`).height('auto');
+        if ($(window).width() < 1024) {
+          $(`#products-list`).parent().siblings('.category-box').children('ul').height(5);
+          $(`#products-list`).parent().siblings('.category-box').children('.category-footer').removeClass('hidden');
+          $(`#products-list`).parent().siblings('.category-box').children('.category-footer-open').addClass('hidden');
+          $(`#products-list`).siblings('.category-footer').addClass('hidden');
+          $(`#products-list`).siblings('.category-footer-open').removeClass('hidden');
+        }
+      }
     },
     update(event, ui) {
       const $list = $(this);
@@ -107,29 +146,7 @@ $(document).ready(function() {
         });
       }
       if ($(window).width() >= 1024) {
-        if ($('#restaurants-list li').length >= 1) {
-          $('#restaurants-list').height('auto');
-        } else {
-          $('#restaurants-list').height(48);
-        }
-
-        if ($('#movies-list li').length >= 1) {
-          $('#movies-list').height('auto');
-        } else {
-          $('#movies-list').height(48);
-        }
-
-        if ($('#books-list li').length >= 1) {
-          $('#books-list').height('auto');
-        } else {
-          $('#books-list').height(48);
-        }
-
-        if ($('#products-list li').length >= 1) {
-          $('#products-list').height('auto');
-        } else {
-          $('#products-list').height(48);
-        }
+        $('ul').height('auto');
       }
     },
   });
