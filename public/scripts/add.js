@@ -12,20 +12,22 @@ $(() => {
       const url = form.attr('action');
       const formData = form.serialize();
 
-      $(".overlay").removeClass('hidden');
-      $('#item-input').val('');
+      if (formData === "item="){
+        console.log("no data");
+      } else {
 
-      $.ajax({
-        type: 'POST',
-        url: url,
-        data: formData,
-      })
+        $(".overlay").removeClass('hidden');
+        $('#item-input').val('');
+
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: formData,
+        })
         .done((response) => {
-        //$('#item-input').val('');
-
           const $list = $(`#${response.category}s-list`);
 
-          $list.append(`<li class="item"><form class="item-form" action="/" method="POST"><button><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>${response.item}</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div></form></li>`);
+          $list.append(`<li class="item"><form class="item-form" action="/items/${response.itemID}/delete" method="POST" data-id="${response.itemID}"><button class="item-button"><i class="fa-solid fa-square-check"></i></button><div class="item-divider"><span>${response.item}</span><div><img class="grip" src="/images/gripIcon-01.png"></div></div></form></li>`);
           $(`#${response.category}s-list`).height('auto');
           $(".overlay").addClass('hidden');
 
@@ -35,6 +37,9 @@ $(() => {
             $(`#${response.category}s-list`).siblings('.category-footer-open').removeClass('hidden');
           }
         });
+
+      }
+
     }
   });
 });

@@ -17,7 +17,9 @@ const { categoryPicker } = require('../apis/categoryPicker');
 router.post('/', (req, res) => {
   categoryPicker(req.body.item, 'Calgary', req.cookies["userid"])
   .then((data) => {
-    const itemObject = {"item" : req.body.item, "category" : data};
+    //console.log(data);
+    const itemObject = {"item" : req.body.item, "category" : data.category, "itemID":data.itemID};
+    console.log(itemObject);
     res.send(itemObject);
   })
 });
@@ -51,7 +53,8 @@ router.post("/:id/delete", (req, res) => {
   //make sql query that deletes item from the database
   deleteItemQuery.deleteItem(req.params.id)
     .then(data => {
-      res.json({ data });
+      //res.json({ data });
+      res.send("testing evil");
     })
     // .then(() => {
     //   res.redirect('/');
