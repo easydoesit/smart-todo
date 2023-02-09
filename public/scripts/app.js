@@ -75,11 +75,12 @@ $(document).ready(function() {
           }
         })
         .get();
-      if (priorities.length) {
-        $.post("/update-item-details", { priorities });
-        updateNoItemsMessage();
-      }
-
+        $('#loading').show();
+        $.post('/update-item-details', { priorities }).done(function () {
+          setTimeout(function () {
+            $('#loading').hide();
+          }, 1000);
+        });
       if ($(window).width() >= 1024) {
         if ($('#restaurants-list li').length >= 1) {
           $('#restaurants-list').height('auto');
@@ -104,12 +105,6 @@ $(document).ready(function() {
         } else {
           $('#products-list').height(48);
         }
-        $('#loading').show();
-        $.post('/update-item-details', { priorities }).done(function () {
-          setTimeout(function () {
-            $('#loading').hide();
-          }, 1000);
-        });
       }
     },
   });
