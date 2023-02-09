@@ -16,7 +16,7 @@ $(document).ready(function() {
     const flashdiv = setInterval(function() {
       console.log(passID);
       const header = $(`#${passID}.category-header`);
-      const footer = $(`#${passID}.category-footer`);
+      const footer = $(`#${passID}.category-footer-open`);
       i++;
       console.log(header);
 
