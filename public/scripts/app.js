@@ -48,7 +48,7 @@ $(document).ready(function() {
     });
   };
 
-    //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
+  //this listener sorts the items in the categories list with drag and drop and updates the database with the new order. It also updates the category ID of the item if it is moved to a different category
 
   $('.sortable').sortable({
     connectWith: '.sortable',
@@ -64,7 +64,7 @@ $(document).ready(function() {
         books: 3,
         products: 4,
       };
-      categoryID = categories[$list.closest('.category-box').attr('id')] || 0;
+      categoryID = categories[$list.closest('.category-box').attr('id')];
       const priorities = $list
         .find('li')
         .map((index, element) => {
@@ -73,12 +73,14 @@ $(document).ready(function() {
             const itemID = itemForm.data('id');
             return { itemID, categoryID, priority: index + 1 };
           }
-          return null;
         })
         .get();
       if (priorities.length) {
-        $.post('/update-item-details', { priorities }, function() {
-          alert('Your list has been updated!');
+        $('#loading').show();
+        $.post('/update-item-details', { priorities }).done(function () {
+          setTimeout(function () {
+            $('#loading').hide();
+          }, 1000);
         });
       }
     },
