@@ -1,9 +1,10 @@
 $font-stack: 'Roboto', normal;
-$nav-color: mediumaquamarine;
-$restaurants-color: lightseagreen;
-$movies-color: cornflowerblue;
-$books-color: darkorchid;
-$products-color: darkslateblue;
+$nav-color: #2d4059;
+$restaurants-color: #fda403;
+$movies-color: #e8751a;
+$books-color: #c51350;
+$products-color: #8a1253;
+$blink-color: #ea8d22;
 
 body {
   display: flex;
@@ -217,7 +218,7 @@ li button {
 }
 
 .blink {
-  background-color: red;
+  background-color: $blink-color;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -253,7 +254,7 @@ li button {
   }
 
   .blink {
-    background-color: red;
+    background-color: $blink-color;
   }
 
 }
