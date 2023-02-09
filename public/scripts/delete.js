@@ -1,5 +1,5 @@
-$(() => {
-  $('.item-button').on('click', function(e) {
+$(document).ready(function() {
+  $('body').on('click', '.item-button', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     const form = $(this).parent();
