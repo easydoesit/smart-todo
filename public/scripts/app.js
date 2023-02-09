@@ -74,7 +74,10 @@ $(document).ready(function() {
     connectWith: '.sortable',
     handle: '.grip',
     stop: function(event, ui) {
-      animateCatBox(categoryID);
+      //console.log('PLACEHOLDER: ', ui.item.parent().siblings('.category-header').attr('id'));
+      const newCat = ui.item.parent().siblings('.category-header').attr('id');
+      //console.log(newCat);
+      animateCatBox(newCat);
     },
     update(event, ui) {
       const $list = $(this);
