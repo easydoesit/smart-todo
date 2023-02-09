@@ -2,6 +2,8 @@ const { checkRestaurants } = require('./checkRestaurants');
 const { checkMovies } = require('./checkMovies');
 const { checkGoogleBooks } = require('./checkGoogleBooks');
 const { addItem } = require('../db/queries/addItem');
+const { getNumberOfItemsInCategory } = require('../db/queries/getNumberOfItemsInCategory');
+
 
 const categoryPicker = function(item, city, userID) {
   console.log(item, city);
@@ -65,15 +67,17 @@ const categoryPicker = function(item, city, userID) {
       return category;
 
     })
-    .then((data) => {
+    .then(category => {
+      return getNumberOfItemsInCategory(category, userID)
+        .then(count => {
+          const priority = count;
+          return addItem(userID, item, category, priority);
+        })
+        .then(itemID => {
+          let itemObject = { "category": category, "itemID": itemID };
 
-      return addItem(userID, item, data)  // pushes userID, item, and Category to Database.
-      .then((itemID) => {
-        let itemObject = {"category":data, "itemID":itemID};
-
-        return itemObject; //returns the category and itemID
-      })
-
+          return itemObject; // returns the category and itemID
+        });
     });
 };
 
