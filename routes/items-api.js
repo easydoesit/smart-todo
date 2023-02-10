@@ -16,10 +16,10 @@ const { categoryPicker } = require('../apis/categoryPicker');
 //Route for adding an item
 router.post('/', (req, res) => {
   categoryPicker(req.body.item, 'Calgary', req.cookies["userid"])
-  .then((data) => {
-    const itemObject = {"item" : req.body.item, "category" : data.category, "itemID":data.itemID};
-    res.send(itemObject);
-  })
+    .then((data) => {
+      const itemObject = {"item" : req.body.item, "category" : data.category, "itemID":data.itemID};
+      res.send(itemObject);
+    });
 });
 
 //Route for updating an item
