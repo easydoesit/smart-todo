@@ -9,16 +9,14 @@ $(document).ready(function() {
   $(".overlay").addClass('hidden');
 
   //this animation function will fire on the sorting of the category. Takes category id
-  //this animation function will fire on the sorting of the category. Takes category id
   const animateCatBox = (id => {
     const passID = id;
     let i = 0;
     const flashdiv = setInterval(function() {
-      console.log(passID);
       const header = $(`#${passID}.category-header`);
-      const footer = $(`#${passID}.category-footer-open`);
+      const footer = $(`#${passID}.category-footer`);
+
       i++;
-      console.log(header);
 
       header.addClass('blink');
       footer.addClass('blink');
@@ -29,6 +27,7 @@ $(document).ready(function() {
       },150);
 
       if (i === 4) clearInterval(flashdiv);
+
     },300, passID);
 
   });
@@ -43,7 +42,6 @@ $(document).ready(function() {
       const $idParent = $(this).parent().attr('id');
       const liLength = $(`#${$idParent} > ul > li`).length;
       const fullHeight = (startConditions.startHeight / 2) * liLength;
-      //$(`#${$idParent} ul`).height(fullHeight);
       $(`#${$idParent} ul`).height('auto');
       $(`#${$idParent}`).siblings('.category-box').children('ul').height(startConditions.liMargin / 2);
       $(this).addClass('hidden');
@@ -74,9 +72,7 @@ $(document).ready(function() {
     connectWith: '.sortable',
     handle: '.grip',
     stop: function(event, ui) {
-      //console.log('PLACEHOLDER: ', ui.item.parent().siblings('.category-header').attr('id'));
       const newCat = ui.item.parent().siblings('.category-header').attr('id');
-      //console.log(newCat);
       animateCatBox(newCat);
 
       //expand selected category and shrink others
