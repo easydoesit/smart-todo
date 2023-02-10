@@ -17,7 +17,7 @@ const getNumberOfItemsInCategory = (category, userID) => {
       console.error(err);
       return err;
     });
-  console.log(res.rows[0].priority)
+
 };
 
 

@@ -10,16 +10,16 @@ const checkGoogleBooks = function(item, num) {
       let bookCap = capitalize(data[i].volumeInfo.title);
       console.log(bookCap);
       if (bookCap === item) {
-        //console.log("The book item exists: ", item);
+
         return true;
       }
     }
 
-    //console.log("The Book item doesn't exist!");
     return item;
+
   });
 };
 
-//checkGoogleBooks('When We Were Orphans',40);
+
 
 module.exports = {checkGoogleBooks};

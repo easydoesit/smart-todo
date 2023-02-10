@@ -9,12 +9,10 @@ const checkMovies = function(item) {
     for (let i in data.results) {
       let capMovie = capitalize(data.results[i].original_title);
       if (capMovie === item) {
-        //console.log("The Movie name exists: ", item);
+
         return true;
       }
     }
-
-    //console.log("The Movie name doesn't exist!");
 
     return item;
 

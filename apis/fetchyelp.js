@@ -16,7 +16,7 @@ const fetchYelp = function(city, name) {
   // yelp request {data} is the full object of what is returned. Console.log(data) to see the nested objects.
   return sdk.v3_business_search({location: cityURLFriendly, term: nameURLFriendly, sort_by: 'best_match', limit: '10'})
     .then(({ data }) => {
-      //console.log(data);
+
       return data;
     })
     .catch(err => console.error(err));

@@ -16,12 +16,3 @@ const fetchGoogleBooks = function(name, numResults) {
 };
 
 module.exports = {fetchGoogleBooks};
-
-// fetchGoogleBooks('The Sicilian', 40).then((data) => {
-//   const arr = [];
-//   for (let i in data) {
-//     arr.push(data[i].volumeInfo.title);
-//   }
-//   console.log(arr);
-// });
-

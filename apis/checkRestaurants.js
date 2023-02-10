@@ -12,12 +12,13 @@ const checkRestaurants = function(city, name) {
       for (let i in data.businesses) {
         let capRest = capitalize(data.businesses[i].name);
         if (capRest === name) {
-          //console.log("The restaurant exists: ", name);
+
           return true;
         }
       }
-      //console.log("The restuarant doesn't exist!");
+
       return name;
+
     });
 };
 
